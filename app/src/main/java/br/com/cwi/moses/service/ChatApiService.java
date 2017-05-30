@@ -1,6 +1,7 @@
 package br.com.cwi.moses.service;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -8,6 +9,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import br.com.cwi.moses.ChatActivity;
 import co.intentservice.chatui.ChatView;
@@ -20,7 +24,7 @@ import co.intentservice.chatui.models.ChatMessage;
 public class ChatApiService {
 
     // TODO
-    private static final String URL_SEND_MESSAGE = "www.teste.cwi.com";
+    private static final String URL_SEND_MESSAGE = "http://www.mocky.io/v2/592dcac01000003f0cd0dbd9";
 
     private ChatView chatView;
     private ChatActivity activity;
@@ -36,7 +40,12 @@ public class ChatApiService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        onSendMessageSuccess(response);
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            onSendMessageSuccess(json.getString("response"));
+                        } catch (JSONException je) {
+                            Log.e(this.getClass().getName(), je.getMessage(), je);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -61,7 +70,7 @@ public class ChatApiService {
     public void adicionaMensagemRecebida(String mensagem) {
         this.chatView.addMessage(new ChatMessage(mensagem, System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
     }
-    
+
     private void adicionaErroNaTela() {
         // TODO
     }
