@@ -24,7 +24,7 @@ public class ChatActivity extends AppCompatActivity {
     private void initComponents() {
         this.chatView = (ChatView) findViewById(R.id.chat_view);
 
-        final ChatApiService chatApiService = new ChatApiService(this.chatView );
+        final ChatApiService chatApiService = new ChatApiService(this.chatView, this);
         this.chatApiService = chatApiService;
 
         this.chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
