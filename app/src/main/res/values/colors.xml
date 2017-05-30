@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="lightBlue">#78b9e7</color>
+    <color name="colorPrimary">#007dc6</color>
+    <color name="colorPrimaryDark">#004c91</color>
+    <color name="colorAccent">#ffc220</color>
+
+    <color name="default_bubble_color_rcv">#007dc6</color>
+    <color name="default_bubble_color_send">#d5d5d5</color>
 </resources>
