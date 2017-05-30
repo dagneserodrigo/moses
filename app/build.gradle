@@ -30,5 +30,7 @@ dependencies {
 
     compile 'co.intentservice.android-chat-ui:chat-ui:0.1.2'
 
+    apply plugin: 'com.google.gms.google-services'
+
     testCompile 'junit:junit:4.12'
 }
