@@ -7,4 +7,6 @@
 
     <color name="default_bubble_color_rcv">#007dc6</color>
     <color name="default_bubble_color_send">#d5d5d5</color>
+
+    <color name="colorRed">#FF0000</color>
 </resources>
