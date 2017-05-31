@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
 
 import br.com.cwi.moses.models.Ticket;
 import br.com.cwi.moses.models.User;
@@ -53,14 +54,8 @@ public class SignInActivity extends BaseActivity {
                                 }
                             } else {
                                 FirebaseUser user = task.getResult().getUser();
-
-                                User userModel = new User();
-                                userModel.email = user.getEmail();
-                                userModel.name = username;
-                                userModel.userId = user.getUid();
-
-                                addUserDatabase(userModel);
-
+                                DatabaseReference dbReference = database.getReference(user.getUid());
+                                dbReference.setValue(username);
                                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
@@ -81,10 +76,5 @@ public class SignInActivity extends BaseActivity {
         if(!email.isEmpty() && !password.isEmpty() && !username.isEmpty()){
             singIn(username, email, password);
         }
-    }
-
-    private void addUserDatabase(User user){
-        DatabaseReference dbReference = database.getReference(user.userId);
-        dbReference.setValue(user);
     }
 }

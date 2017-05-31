@@ -61,14 +61,6 @@ public class LoginActivity extends BaseActivity {
                                     showError("Falha na authenticaçao");
                                 }
                             } else {
-                                FirebaseUser user = task.getResult().getUser();
-
-                                User userModel = new User();
-                                userModel.email = user.getEmail();
-                                userModel.userId = user.getUid();
-
-                                addUserDatabase(userModel);
-
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
@@ -89,14 +81,5 @@ public class LoginActivity extends BaseActivity {
     public void openNewAccount(View view){
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
-    }
-
-    private void addUserDatabase(User user){
-        user.name = user.email.split("@")[0];
-        user.tickets.add(new Ticket("primeiro ticket", "data do primeiro"));
-        user.tickets.add(new Ticket("segundo ticket", "data do segundo"));
-        DatabaseReference dbReference = database.getReference(user.userId);
-        String userJson = new Gson().toJson(user);
-        dbReference.setValue(userJson);
     }
 }
