@@ -9,7 +9,11 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
+import br.com.cwi.moses.models.Ticket;
+import br.com.cwi.moses.models.User;
 import br.com.cwi.moses.util.Constantes;
 
 public class SignInActivity extends BaseActivity {
@@ -33,7 +37,7 @@ public class SignInActivity extends BaseActivity {
         txtConfirm = (EditText)findViewById(R.id.txtConfirm);
     }
 
-    public void singIn(String email, String senha){
+    public void singIn(final String username, String email, String senha){
         showLoader(Constantes.WAIT_LOADER);
         if(!email.isEmpty() && !senha.isEmpty()){
             mAuth.createUserWithEmailAndPassword(email, senha)
@@ -48,6 +52,15 @@ public class SignInActivity extends BaseActivity {
                                     showError("Falha na authenticaçao");
                                 }
                             } else {
+                                FirebaseUser user = task.getResult().getUser();
+
+                                User userModel = new User();
+                                userModel.email = user.getEmail();
+                                userModel.name = username;
+                                userModel.userId = user.getUid();
+
+                                addUserDatabase(userModel);
+
                                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
@@ -62,10 +75,16 @@ public class SignInActivity extends BaseActivity {
     }
 
     public void signIn(View view){
+        String username = txtName.getText().toString();
         String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();
-        if(!email.isEmpty() && !password.isEmpty()){
-            singIn(email, password);
+        if(!email.isEmpty() && !password.isEmpty() && !username.isEmpty()){
+            singIn(username, email, password);
         }
+    }
+
+    private void addUserDatabase(User user){
+        DatabaseReference dbReference = database.getReference(user.userId);
+        dbReference.setValue(user);
     }
 }

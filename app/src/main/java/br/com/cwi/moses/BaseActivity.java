@@ -17,11 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class BaseActivity extends AppCompatActivity {
 
     protected FirebaseAuth mAuth;
     protected FirebaseAuth.AuthStateListener mAuthListener;
+    protected FirebaseDatabase database;
+
     protected final String TAG_FIREBASE = "FIREBASE_AUTHENTICATION";
 
     private AlertDialog.Builder alert;
@@ -43,6 +46,8 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         };
+
+        database = FirebaseDatabase.getInstance();
 
         progress = new ProgressDialog(this);
         progress.setCancelable(false);

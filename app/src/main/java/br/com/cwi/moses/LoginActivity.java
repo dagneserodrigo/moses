@@ -11,7 +11,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
 
+import br.com.cwi.moses.models.Ticket;
+import br.com.cwi.moses.models.User;
 import br.com.cwi.moses.util.Constantes;
 
 public class LoginActivity extends BaseActivity {
@@ -57,6 +61,14 @@ public class LoginActivity extends BaseActivity {
                                     showError("Falha na authenticaçao");
                                 }
                             } else {
+                                FirebaseUser user = task.getResult().getUser();
+
+                                User userModel = new User();
+                                userModel.email = user.getEmail();
+                                userModel.userId = user.getUid();
+
+                                addUserDatabase(userModel);
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
@@ -77,5 +89,14 @@ public class LoginActivity extends BaseActivity {
     public void openNewAccount(View view){
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
+    }
+
+    private void addUserDatabase(User user){
+        user.name = user.email.split("@")[0];
+        user.tickets.add(new Ticket("primeiro ticket", "data do primeiro"));
+        user.tickets.add(new Ticket("segundo ticket", "data do segundo"));
+        DatabaseReference dbReference = database.getReference(user.userId);
+        String userJson = new Gson().toJson(user);
+        dbReference.setValue(userJson);
     }
 }
