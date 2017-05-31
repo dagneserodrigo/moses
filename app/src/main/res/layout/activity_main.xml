@@ -31,14 +31,17 @@
             android:layout_height="wrap_content"
             android:text="Lista de Tickets"
             android:onClick="goToTicket"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sair"
+            android:onClick="logout"/>
+
     </LinearLayout>
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sair"
-        android:onClick="logout"
-        />
 
 </RelativeLayout>

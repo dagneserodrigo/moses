@@ -1,17 +1,16 @@
 package br.com.cwi.moses;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+
+import br.com.cwi.moses.util.Constantes;
 
 public class SignInActivity extends BaseActivity {
 
@@ -35,7 +34,7 @@ public class SignInActivity extends BaseActivity {
     }
 
     public void singIn(String email, String senha){
-        showLoader("Aguarde...");
+        showLoader(Constantes.WAIT_LOADER);
         if(!email.isEmpty() && !senha.isEmpty()){
             mAuth.createUserWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -44,7 +43,7 @@ public class SignInActivity extends BaseActivity {
                             hideLoader();
                             if (!task.isSuccessful()) {
                                 if(task.getException().getMessage().indexOf("network error") != -1){
-                                    showError("Verifique a internet");
+                                    showError(Constantes.INTERNET_ERROR);
                                 }else{
                                     showError("Falha na authenticaçao");
                                 }
