@@ -5,6 +5,12 @@
     <color name="colorPrimaryDark">#004c91</color>
     <color name="colorAccent">#ffc220</color>
 
+    <color name="walmart_orange">#f47321</color>
+    <color name="walmart_green">#76c043</color>
+    <color name="walmart_yellow">#ffc220</color>
+    <color name="walmart_darkGreen">#367c2b</color>
+    <color name="walmart_red">#d32f2f</color>
+
     <color name="default_bubble_color_rcv">#007dc6</color>
     <color name="default_bubble_color_send">#d5d5d5</color>
 </resources>

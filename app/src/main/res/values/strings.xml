@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Moses</string>
+
+    <string name="ticket_type_prompt">Tipo do Ticket</string>
+    <string-array name="ticket_type_array">
+        <item>Problema</item>
+        <item>Sugestão</item>
+        <item>Reclamação</item>
+    </string-array>
 </resources>
