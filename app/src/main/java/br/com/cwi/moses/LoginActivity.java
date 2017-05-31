@@ -32,10 +32,10 @@ public class LoginActivity extends BaseActivity {
         mAuth.addAuthStateListener(mAuthListener);
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(currentUser != null){
+        if(currentUser != null){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-//        }
+        }
     }
 
     private void initializeComponents(){
