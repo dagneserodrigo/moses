@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.List;
+
+import br.com.cwi.moses.model.Ticket;
+import br.com.cwi.moses.service.TicketApiService;
+
 public class TicketFormActivity extends AppCompatActivity {
 
     @Override

@@ -11,10 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.gson.Gson;
 
-import br.com.cwi.moses.models.Ticket;
-import br.com.cwi.moses.models.User;
 import br.com.cwi.moses.util.Constantes;
 
 public class SignInActivity extends BaseActivity {

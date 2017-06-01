@@ -9,17 +9,21 @@ import java.util.Date;
 
 public class Ticket implements Serializable {
 
-    private String titulo;
+    public String id;
 
-    private String descricao;
+    public String titulo;
 
-    private String respostaTicket;
+    public String descricao;
 
-    private TipoTicket tipoTicket;
+    public String respostaTicket;
 
-    private SituacaoTicket situacaoTicket;
+    public TipoTicket tipoTicket;
 
-    private Date dataAberturaTicket;
+    public SituacaoTicket situacaoTicket;
+
+    public Date dataAberturaTicket;
+
+    public String userId;
 
     public Ticket(String titulo, String descricao, TipoTicket tipoTicket, SituacaoTicket situacaoTicket) {
         this.titulo = titulo;
@@ -28,6 +32,8 @@ public class Ticket implements Serializable {
         this.situacaoTicket = situacaoTicket;
         this.dataAberturaTicket = new Date();
     }
+
+    public Ticket(){}
 
     public String getTitulo() {
         return titulo;
