@@ -17,14 +17,20 @@ import br.com.cwi.moses.utils.Constants;
 
 public class TicketService implements ChildEventListener {
 
-    private FirebaseDatabase database;
-    private List<Ticket> tickets;
+    private static TicketService ticketService = new TicketService();
 
+    private FirebaseDatabase database;
+
+    private List<Ticket> tickets;
     public TicketService(){
         tickets = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference dbReference = database.getReference(Constants.USER_CHILD_FRD);
         dbReference.addChildEventListener(this);
+    }
+
+    public static TicketService getInstance( ) {
+        return ticketService;
     }
 
     public List<Ticket> getAllTickets() {
@@ -46,6 +52,11 @@ public class TicketService implements ChildEventListener {
         list.add(new Ticket("Trabalhar de Bermuda", "Pode trabalhar de bermuda no verão?", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
 
         return list;
+    }
+
+    public void addTicketFromForm(String titulo, String descricao, TipoTicket tipo) {
+        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO);
+        this.add(ticket);
     }
 
     public Ticket getTicketById(String id){

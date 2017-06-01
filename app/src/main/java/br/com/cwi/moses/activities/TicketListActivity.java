@@ -9,6 +9,7 @@ import android.view.View;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.adapters.TicketAdapter;
+import br.com.cwi.moses.models.TipoTicket;
 import br.com.cwi.moses.services.TicketService;
 
 public class TicketListActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class TicketListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
-    private TicketService ticketApiService;
+    private TicketService ticketService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +32,32 @@ public class TicketListActivity extends AppCompatActivity {
     }
 
     public void novoTicketSugestao(View view) {
-        this.goToNewTicket("Sugestão");
+        this.goToNewTicket(TipoTicket.SUGESTAO);
     }
 
     public void novoTicketDuvida(View view) {
-        this.goToNewTicket("Dúvida");
+        this.goToNewTicket(TipoTicket.DUVIDA);
     }
 
-    public void novoTicketReclamacao(View view) {
-        this.goToNewTicket("Problema");
+    public void novoTicketProblema(View view) {
+        this.goToNewTicket(TipoTicket.PROBLEMA);
     }
 
-    private void goToNewTicket(String ticketTipo) {
+    private void goToNewTicket(TipoTicket tipoTicket) {
         Intent intentTicketForm = new Intent(this, TicketFormActivity.class);
-        intentTicketForm.putExtra("TICKET_TIPO", ticketTipo);
+        intentTicketForm.putExtra("TICKET_TIPO", tipoTicket);
         startActivity(intentTicketForm);
     }
 
     private void initComponents() {
-        this.ticketApiService = new TicketService();
+        this.ticketService = new TicketService();
 
         this.ticket_list = (RecyclerView) findViewById(R.id.ticket_list);
     }
 
     private void initList() {
         this.layoutManager = new LinearLayoutManager(this);
-        this.adapter = new TicketAdapter(this.ticketApiService.getAllTickets());
+        this.adapter = new TicketAdapter(this.ticketService.getAllTickets());
 
         this.ticket_list.setLayoutManager(this.layoutManager);
         this.ticket_list.setAdapter(this.adapter);

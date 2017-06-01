@@ -8,12 +8,14 @@ import android.widget.EditText;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.services.AuthService;
+import br.com.cwi.moses.services.FormValidatorService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignInActivity extends BaseActivity {
 
     private AuthService authService;
+    private FormValidatorService formValidatorService = new FormValidatorService();
 
     @BindView(R.id.txtEmail) EditText txtEmail;
     @BindView(R.id.txtPassword) EditText txtPassword;
@@ -35,7 +37,12 @@ public class SignInActivity extends BaseActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn(txtEmail.getText().toString(), txtPassword.getText().toString());
+                if (isEmailValid() && isPassValid()) {
+                    String email = txtEmail.getText().toString();
+                    String senha = txtPassword.getText().toString();
+
+                    signIn(email, senha);
+                }
             }
         });
 
@@ -67,5 +74,15 @@ public class SignInActivity extends BaseActivity {
     public void signUp(){
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
+    }
+
+    private boolean isPassValid() {
+        formValidatorService.cleanFieldErrors(txtPassword);
+        return formValidatorService.isntFieldEmpty(txtPassword);
+    }
+
+    private boolean isEmailValid() {
+        formValidatorService.cleanFieldErrors(txtEmail);
+        return formValidatorService.isntFieldEmpty(txtEmail) && formValidatorService.emailPatternsMatches(txtEmail);
     }
 }

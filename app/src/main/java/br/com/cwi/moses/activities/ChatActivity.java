@@ -5,37 +5,39 @@ import android.os.Bundle;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.services.ChatService;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private ChatView chatView;
+    @BindView(R.id.chat_view)
+    ChatView chatView;
 
-    private ChatService chatApiService;
+    private ChatService chatService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        ButterKnife.bind(this);
 
         this.initComponents();
     }
 
     private void initComponents() {
-        this.chatView = (ChatView) findViewById(R.id.chat_view);
-
-        final ChatService chatApiService = new ChatService(this.chatView, this);
-        this.chatApiService = chatApiService;
+        final ChatService chatService = new ChatService(this.chatView, this);
+        this.chatService = chatService;
 
         this.chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
             @Override
             public boolean sendMessage(ChatMessage chatMessage) {
-                chatApiService.sendMessage(chatMessage);
+                chatService.sendMessage(chatMessage);
                 return true;
             }
         });
 
-        this.chatApiService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
+        this.chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
     }
 }
