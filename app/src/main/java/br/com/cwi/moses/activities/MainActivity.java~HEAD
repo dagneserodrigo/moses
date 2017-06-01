@@ -19,6 +19,10 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    public void logout(View view){
+        logout();
+    }
+
     public void goToTicket(View view) {
         Intent intent = new Intent(this, TicketListActivity.class);
         startActivity(intent);

@@ -1,4 +1,4 @@
-package br.com.cwi.moses.model;
+package br.com.cwi.moses.models;
 
 import java.io.Serializable;
 import java.util.Date;

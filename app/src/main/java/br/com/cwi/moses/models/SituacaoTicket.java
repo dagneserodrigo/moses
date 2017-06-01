@@ -1,4 +1,4 @@
-package br.com.cwi.moses.model;
+package br.com.cwi.moses.models;
 
 /**
  * Created by Murillo on 31/05/2017.

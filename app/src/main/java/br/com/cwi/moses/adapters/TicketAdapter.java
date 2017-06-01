@@ -1,4 +1,4 @@
-package br.com.cwi.moses.adapter;
+package br.com.cwi.moses.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.com.cwi.moses.R;
+<<<<<<< HEAD:app/src/main/java/br/com/cwi/moses/adapter/TicketAdapter.java
 import br.com.cwi.moses.model.Ticket;
 import br.com.cwi.moses.model.TipoTicket;
+=======
+import br.com.cwi.moses.models.Ticket;
+import br.com.cwi.moses.models.TipoTicket;
+>>>>>>> master:app/src/main/java/br/com/cwi/moses/adapters/TicketAdapter.java
 
 /**
  * Created by Murillo on 31/05/2017.
