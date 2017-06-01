@@ -1,8 +1,10 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import br.com.cwi.moses.R;
 
 public class MainActivity extends BaseActivity {
 

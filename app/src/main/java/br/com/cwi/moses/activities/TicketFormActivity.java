@@ -1,4 +1,4 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,19 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.List;
-
-import br.com.cwi.moses.model.Ticket;
+import br.com.cwi.moses.R;
 import br.com.cwi.moses.model.TipoTicket;
 import br.com.cwi.moses.service.FormValidatorService;
-import br.com.cwi.moses.service.TicketApiService;
+import br.com.cwi.moses.service.TicketService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TicketFormActivity extends AppCompatActivity {
 
     private FormValidatorService formValidatorService = new FormValidatorService();
-    private TicketApiService ticketApiService = TicketApiService.getInstance();
+    private TicketService ticketService = TicketService.getInstance();
 
     private TipoTicket tipoTicket;
 
@@ -48,7 +46,7 @@ public class TicketFormActivity extends AppCompatActivity {
             String titulo = ticket_form_txt_titulo.getText().toString();
             String descricao = ticket_form_txt_descricao.getText().toString();
 
-            this.ticketApiService.addTicketFromForm(titulo, descricao, this.tipoTicket);
+            this.ticketService.addTicketFromForm(titulo, descricao, this.tipoTicket);
             this.goToListTickets();
         }
     }

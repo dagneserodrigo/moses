@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="br.com.cwi.moses.TicketFormActivity">
+    tools:context="br.com.cwi.moses.activities.TicketFormActivity">
 
     <LinearLayout
         android:layout_width="0dp"

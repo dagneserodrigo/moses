@@ -1,9 +1,10 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import br.com.cwi.moses.service.ChatApiService;
+import br.com.cwi.moses.R;
+import br.com.cwi.moses.service.ChatService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.intentservice.chatui.ChatView;
@@ -14,7 +15,7 @@ public class ChatActivity extends AppCompatActivity {
     @BindView(R.id.chat_view)
     ChatView chatView;
 
-    private ChatApiService chatApiService;
+    private ChatService chatService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,17 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        final ChatApiService chatApiService = new ChatApiService(this.chatView, this);
-        this.chatApiService = chatApiService;
+        final ChatService chatService = new ChatService(this.chatView, this);
+        this.chatService = chatService;
 
         this.chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
             @Override
             public boolean sendMessage(ChatMessage chatMessage) {
-                chatApiService.sendMessage(chatMessage);
+                chatService.sendMessage(chatMessage);
                 return true;
             }
         });
 
-        this.chatApiService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
+        this.chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
     }
 }

@@ -1,4 +1,4 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+import br.com.cwi.moses.R;
 import br.com.cwi.moses.service.FormValidatorService;
 import br.com.cwi.moses.util.Constantes;
 import butterknife.BindView;

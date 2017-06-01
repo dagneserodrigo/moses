@@ -14,22 +14,22 @@ import br.com.cwi.moses.model.Ticket;
 import br.com.cwi.moses.model.TipoTicket;
 import br.com.cwi.moses.util.Constantes;
 
-public class TicketApiService implements ChildEventListener {
+public class TicketService implements ChildEventListener {
 
-    private static TicketApiService ticketApiService = new TicketApiService();
+    private static TicketService ticketService = new TicketService();
 
     private FirebaseDatabase database;
     private List<Ticket> tickets;
 
-    public TicketApiService(){
+    public TicketService(){
         tickets = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference dbReference = database.getReference(Constantes.USER_CHILD_FRD);
         dbReference.addChildEventListener(this);
     }
 
-    public static TicketApiService getInstance( ) {
-        return ticketApiService;
+    public static TicketService getInstance( ) {
+        return ticketService;
     }
 
     // TODO remover método mock
