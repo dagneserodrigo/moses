@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import br.com.cwi.moses.R;
-import br.com.cwi.moses.service.ChatService;
+import br.com.cwi.moses.services.ChatService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.intentservice.chatui.ChatView;

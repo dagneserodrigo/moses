@@ -8,9 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import br.com.cwi.moses.R;
-import br.com.cwi.moses.adapter.TicketAdapter;
-import br.com.cwi.moses.model.TipoTicket;
-import br.com.cwi.moses.service.TicketService;
+import br.com.cwi.moses.adapters.TicketAdapter;
+import br.com.cwi.moses.models.TipoTicket;
+import br.com.cwi.moses.services.TicketService;
 
 public class TicketListActivity extends AppCompatActivity {
 

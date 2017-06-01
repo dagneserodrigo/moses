@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import br.com.cwi.moses.R;
-import br.com.cwi.moses.model.TipoTicket;
-import br.com.cwi.moses.service.FormValidatorService;
-import br.com.cwi.moses.service.TicketService;
+import br.com.cwi.moses.models.TipoTicket;
+import br.com.cwi.moses.services.FormValidatorService;
+import br.com.cwi.moses.services.TicketService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

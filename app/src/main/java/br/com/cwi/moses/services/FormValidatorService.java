@@ -1,4 +1,4 @@
-package br.com.cwi.moses.service;
+package br.com.cwi.moses.services;
 
 import android.util.Patterns;
 import android.widget.EditText;

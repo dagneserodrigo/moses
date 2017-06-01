@@ -6,8 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import br.com.cwi.moses.R;
-import br.com.cwi.moses.service.FormValidatorService;
 import br.com.cwi.moses.services.AuthService;
+import br.com.cwi.moses.services.FormValidatorService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
