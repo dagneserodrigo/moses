@@ -7,17 +7,17 @@ import android.widget.EditText;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.services.AuthService;
-import br.com.cwi.moses.services.FormValidatorService;
+import br.com.cwi.moses.utils.FormValidator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignUpActivity extends BaseActivity {
     private AuthService authService;
-    private FormValidatorService formValidatorService;
 
     @BindView(R.id.txtName) EditText txtName;
     @BindView(R.id.txtEmail) EditText txtEmail;
     @BindView(R.id.txtPassword) EditText txtPassword;
+    @BindView(R.id.txtConfirmPassword) EditText txtConfirmPassword;
     @BindView(R.id.btnSignUp) Button btnSignUp;
 
     @Override
@@ -30,13 +30,12 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void initComponents() {
-        formValidatorService = new FormValidatorService();
         authService = new AuthService(this);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNameValid() && isEmailValid() && arePasswordsValid()) {
+                if (nameIsValid() && emailIsValid() && credentialIsValid()) {
                     String username = txtName.getText().toString();
                     String email = txtEmail.getText().toString();
                     String password = txtPassword.getText().toString();
@@ -51,26 +50,19 @@ public class SignUpActivity extends BaseActivity {
         authService.signUp(name, email, password);
     }
 
-    private boolean isNameValid() {
-        formValidatorService.cleanFieldErrors(txtName);
-
-        return formValidatorService.isntFieldEmpty(txtName);
+    private boolean nameIsValid() {
+        return !FormValidator.isEmpty(txtName);
     }
 
-    private boolean isEmailValid() {
-        formValidatorService.cleanFieldErrors(txtEmail);
-
-        return formValidatorService.isntFieldEmpty(txtEmail)
-                && formValidatorService.emailPatternsMatches(txtEmail);
+    private boolean emailIsValid() {
+        return !FormValidator.isEmpty(txtEmail)
+            && FormValidator.emailIsvalid(txtEmail);
     }
 
-    private boolean arePasswordsValid() {
-        formValidatorService.cleanFieldErrors(txtPassword);
-//        formValidatorService.cleanFieldErrors(txtConfirm);
-
-        return formValidatorService.isntFieldEmpty(txtPassword)
-                && formValidatorService.isInputBiggerThanMinLength(txtPassword);
-//                && formValidatorService.isntFieldEmpty(txtConfirm)
-//                && formValidatorService.arePassAndConfirmationEquals(txtPassword, txtConfirm);
+    private boolean credentialIsValid() {
+        return !FormValidator.isEmpty(txtPassword)
+            && FormValidator.passwordIsValid(txtPassword)
+            && !FormValidator.isEmpty(txtConfirmPassword)
+            && FormValidator.passwordConfirmationIsValid(txtPassword, txtConfirmPassword);
     }
 }

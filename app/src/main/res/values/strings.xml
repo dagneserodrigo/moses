@@ -8,6 +8,9 @@
     <string name="btn_sign_up">Cadastrar</string>
     <string name="name_hint">Nome</string>
     <string name="confirm_password_hint">Confirme sua senha</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="lbl_tickets_list">Lista de Tickets</string>
+    <string name="lbl_go_to_chat">Ir para o chat</string>
     <string-array name="ticket_type_array">
         <item>Problema</item>
         <item>Sugestão</item>

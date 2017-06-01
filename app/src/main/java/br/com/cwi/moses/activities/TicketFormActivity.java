@@ -8,14 +8,14 @@ import android.widget.EditText;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.models.TipoTicket;
-import br.com.cwi.moses.services.FormValidatorService;
+import br.com.cwi.moses.utils.FormValidator;
 import br.com.cwi.moses.services.TicketService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TicketFormActivity extends AppCompatActivity {
 
-    private FormValidatorService formValidatorService = new FormValidatorService();
+    private FormValidator formValidatorService = new FormValidator();
     private TicketService ticketService = TicketService.getInstance();
 
     private TipoTicket tipoTicket;
@@ -42,7 +42,7 @@ public class TicketFormActivity extends AppCompatActivity {
     }
 
     public void salvarTicket(View view) {
-        if (this.isTituloOk() && this.isDescricaoOk()) {
+        if (titleIsValid() && descriptionIsValid()) {
             String titulo = ticket_form_txt_titulo.getText().toString();
             String descricao = ticket_form_txt_descricao.getText().toString();
 
@@ -56,14 +56,12 @@ public class TicketFormActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean isTituloOk() {
-        formValidatorService.cleanFieldErrors(ticket_form_txt_titulo);
-        return formValidatorService.isntFieldEmpty(ticket_form_txt_titulo);
+    private boolean titleIsValid() {
+        return !FormValidator.isEmpty(ticket_form_txt_titulo);
     }
 
-    private boolean isDescricaoOk() {
-        formValidatorService.cleanFieldErrors(ticket_form_txt_descricao);
-        return formValidatorService.isntFieldEmpty(ticket_form_txt_descricao);
+    private boolean descriptionIsValid() {
+        return !FormValidator.isEmpty(ticket_form_txt_descricao);
     }
 
     private String buildPageTitle() {
