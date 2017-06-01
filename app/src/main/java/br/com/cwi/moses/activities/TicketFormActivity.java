@@ -65,6 +65,6 @@ public class TicketFormActivity extends AppCompatActivity {
     }
 
     private String buildPageTitle() {
-        return "Novo Ticket - " + this.tipoTicket.toString();
+        return "Novo Ticket - " + this.tipoTicket.name();
     }
 }

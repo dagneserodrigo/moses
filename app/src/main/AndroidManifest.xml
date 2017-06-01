@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activities.TicketFormActivity" />
         <activity android:name=".activities.TicketListActivity"></activity>
+        <activity android:name=".activities.TicketDetalheActivity"></activity>
     </application>
 
 </manifest>
