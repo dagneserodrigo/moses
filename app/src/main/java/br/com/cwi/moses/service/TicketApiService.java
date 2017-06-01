@@ -56,12 +56,9 @@ public class TicketApiService implements ChildEventListener {
 
     public List<Ticket> getByUser(String userId){
         List<Ticket> list = new ArrayList<>();
-
-        DatabaseReference dbReference = database.getReference(Constantes.USER_CHILD_FRD);
-        DatabaseReference dbTicketsReference = dbReference.child(userId).child(Constantes.TICKET_CHILD_FRD);
-
-        String key = dbTicketsReference.getKey();
-
+        for(Ticket t : tickets)
+            if(t.userId.equals(userId))
+                list.add(t);
         return list;
     }
 
@@ -74,8 +71,8 @@ public class TicketApiService implements ChildEventListener {
 
     @Override
     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        DataSnapshot retorno = dataSnapshot.child(Constantes.TICKET_CHILD_FRD);
-        for(DataSnapshot item : retorno.getChildren()){
+        DataSnapshot ticketChild = dataSnapshot.child(Constantes.TICKET_CHILD_FRD);
+        for(DataSnapshot item : ticketChild.getChildren()){
             Ticket ticket = item.getValue(Ticket.class);
             if(getTicketById(ticket.id) == null)
                 tickets.add(ticket);
