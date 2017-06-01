@@ -1,4 +1,4 @@
-package br.com.cwi.moses.service;
+package br.com.cwi.moses.services;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.cwi.moses.ChatActivity;
+import br.com.cwi.moses.activities.ChatActivity;
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
 
@@ -21,7 +21,7 @@ import co.intentservice.chatui.models.ChatMessage;
  * Created by Murillo on 30/05/2017.
  */
 
-public class ChatApiService {
+public class ChatService {
 
     // TODO
     private static final String URL_SEND_MESSAGE = "http://www.mocky.io/v2/592dcac01000003f0cd0dbd9";
@@ -29,7 +29,7 @@ public class ChatApiService {
     private ChatView chatView;
     private ChatActivity activity;
 
-    public ChatApiService(ChatView chatView, ChatActivity activity) {
+    public ChatService(ChatView chatView, ChatActivity activity) {
         this.chatView = chatView;
         this.activity = activity;
     }
