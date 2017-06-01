@@ -39,6 +39,6 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void signUp(String name, String email, String password) {
-        authService.signUp(email, password);
+        authService.signUp(name, email, password);
     }
 }

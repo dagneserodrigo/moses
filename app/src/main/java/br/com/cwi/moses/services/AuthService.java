@@ -9,6 +9,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.cwi.moses.activities.BaseActivity;
 import br.com.cwi.moses.activities.MainActivity;
@@ -59,7 +61,8 @@ public class AuthService {
             });
     }
 
-    public void signUp(String email, String password) {
+    public void signUp(String name, String email, String password) {
+        final String username = name;
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -72,8 +75,10 @@ public class AuthService {
                     } else {
                         Log.w(Constants.LOG_FIREBASE, "createUserWithEmail:success", task.getException());
                         FirebaseUser user = task.getResult().getUser();
-//                        DatabaseReference dbReference = database.getReference(user.getUid());
-//                        dbReference.setValue(username);
+
+                        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(Constants.USER_CHILD_FRD);
+                        dbReference.child(user.getUid()).child(Constants.USERNAME_CHILD_FRD).setValue(username);
+
                         Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
                     }
