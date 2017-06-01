@@ -1,4 +1,4 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import br.com.cwi.moses.adapter.TicketAdapter;
-import br.com.cwi.moses.service.TicketApiService;
+import br.com.cwi.moses.R;
+import br.com.cwi.moses.adapters.TicketAdapter;
+import br.com.cwi.moses.services.TicketService;
 
 public class TicketListActivity extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class TicketListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
-    private TicketApiService ticketApiService;
+    private TicketService ticketApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class TicketListActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        this.ticketApiService = new TicketApiService();
+        this.ticketApiService = new TicketService();
 
         this.ticket_list = (RecyclerView) findViewById(R.id.ticket_list);
     }

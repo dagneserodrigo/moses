@@ -1,14 +1,12 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.List;
 
-import br.com.cwi.moses.model.Ticket;
-import br.com.cwi.moses.service.TicketApiService;
+import br.com.cwi.moses.R;
 
 public class TicketFormActivity extends AppCompatActivity {
 

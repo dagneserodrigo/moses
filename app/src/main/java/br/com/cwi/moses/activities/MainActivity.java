@@ -1,8 +1,10 @@
-package br.com.cwi.moses;
+package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import br.com.cwi.moses.R;
 
 public class MainActivity extends BaseActivity {
 
@@ -15,10 +17,6 @@ public class MainActivity extends BaseActivity {
     public void goToChat(View view) {
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
-    }
-
-    public void logout(View view){
-        logout();
     }
 
     public void goToTicket(View view) {

@@ -1,4 +1,5 @@
-package br.com.cwi.moses.service;
+package br.com.cwi.moses.services;
+
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -9,20 +10,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.cwi.moses.model.SituacaoTicket;
-import br.com.cwi.moses.model.Ticket;
-import br.com.cwi.moses.model.TipoTicket;
-import br.com.cwi.moses.util.Constantes;
+import br.com.cwi.moses.models.SituacaoTicket;
+import br.com.cwi.moses.models.Ticket;
+import br.com.cwi.moses.models.TipoTicket;
+import br.com.cwi.moses.utils.Constants;
 
-public class TicketApiService implements ChildEventListener {
+public class TicketService implements ChildEventListener {
 
     private FirebaseDatabase database;
     private List<Ticket> tickets;
 
-    public TicketApiService(){
+    public TicketService(){
         tickets = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
-        DatabaseReference dbReference = database.getReference(Constantes.USER_CHILD_FRD);
+        DatabaseReference dbReference = database.getReference(Constants.USER_CHILD_FRD);
         dbReference.addChildEventListener(this);
     }
 
@@ -63,15 +64,15 @@ public class TicketApiService implements ChildEventListener {
     }
 
     public void add(Ticket ticket){
-        DatabaseReference dbReference = database.getReference(Constantes.USER_CHILD_FRD);
-        String keyId = dbReference.child(ticket.userId).child(Constantes.TICKET_CHILD_FRD).push().getKey();
+        DatabaseReference dbReference = database.getReference(Constants.USER_CHILD_FRD);
+        String keyId = dbReference.child(ticket.userId).child(Constants.TICKET_CHILD_FRD).push().getKey();
         ticket.id = keyId;
-        dbReference.child(ticket.userId).child(Constantes.TICKET_CHILD_FRD).child(keyId).setValue(ticket);
+        dbReference.child(ticket.userId).child(Constants.TICKET_CHILD_FRD).child(keyId).setValue(ticket);
     }
 
     @Override
     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        DataSnapshot ticketChild = dataSnapshot.child(Constantes.TICKET_CHILD_FRD);
+        DataSnapshot ticketChild = dataSnapshot.child(Constants.TICKET_CHILD_FRD);
         for(DataSnapshot item : ticketChild.getChildren()){
             Ticket ticket = item.getValue(Ticket.class);
             if(getTicketById(ticket.id) == null)
@@ -81,7 +82,7 @@ public class TicketApiService implements ChildEventListener {
 
     @Override
     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-        DataSnapshot ticketChild = dataSnapshot.child(Constantes.TICKET_CHILD_FRD);
+        DataSnapshot ticketChild = dataSnapshot.child(Constants.TICKET_CHILD_FRD);
         for(DataSnapshot item : ticketChild.getChildren()){
             Ticket ticket = item.getValue(Ticket.class);
             tickets.remove(getTicketById(ticket.id));
@@ -91,7 +92,7 @@ public class TicketApiService implements ChildEventListener {
 
     @Override
     public void onChildRemoved(DataSnapshot dataSnapshot) {
-        DataSnapshot ticketChild = dataSnapshot.child(Constantes.TICKET_CHILD_FRD);
+        DataSnapshot ticketChild = dataSnapshot.child(Constants.TICKET_CHILD_FRD);
         for(DataSnapshot item : ticketChild.getChildren()){
             Ticket ticket = item.getValue(Ticket.class);
             tickets.remove(getTicketById(ticket.id));

@@ -1,24 +1,18 @@
-package br.com.cwi.moses.adapter;
+package br.com.cwi.moses.adapters;
 
-import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import br.com.cwi.moses.R;
-import br.com.cwi.moses.model.SituacaoTicket;
-import br.com.cwi.moses.model.Ticket;
-import br.com.cwi.moses.model.TipoTicket;
-
-import static br.com.cwi.moses.model.TipoTicket.DUVIDA;
+import br.com.cwi.moses.models.Ticket;
+import br.com.cwi.moses.models.TipoTicket;
 
 /**
  * Created by Murillo on 31/05/2017.
