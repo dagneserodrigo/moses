@@ -4,12 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import br.com.cwi.moses.service.ChatApiService;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private ChatView chatView;
+    @BindView(R.id.chat_view)
+    ChatView chatView;
 
     private ChatApiService chatApiService;
 
@@ -17,13 +20,12 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        ButterKnife.bind(this);
 
         this.initComponents();
     }
 
     private void initComponents() {
-        this.chatView = (ChatView) findViewById(R.id.chat_view);
-
         final ChatApiService chatApiService = new ChatApiService(this.chatView, this);
         this.chatApiService = chatApiService;
 

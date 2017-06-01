@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import br.com.cwi.moses.adapter.TicketAdapter;
+import br.com.cwi.moses.model.TipoTicket;
 import br.com.cwi.moses.service.TicketApiService;
 
 public class TicketListActivity extends AppCompatActivity {
@@ -30,20 +31,20 @@ public class TicketListActivity extends AppCompatActivity {
     }
 
     public void novoTicketSugestao(View view) {
-        this.goToNewTicket("Sugestão");
+        this.goToNewTicket(TipoTicket.SUGESTAO);
     }
 
     public void novoTicketDuvida(View view) {
-        this.goToNewTicket("Dúvida");
+        this.goToNewTicket(TipoTicket.DUVIDA);
     }
 
-    public void novoTicketReclamacao(View view) {
-        this.goToNewTicket("Problema");
+    public void novoTicketProblema(View view) {
+        this.goToNewTicket(TipoTicket.PROBLEMA);
     }
 
-    private void goToNewTicket(String ticketTipo) {
+    private void goToNewTicket(TipoTicket tipoTicket) {
         Intent intentTicketForm = new Intent(this, TicketFormActivity.class);
-        intentTicketForm.putExtra("TICKET_TIPO", ticketTipo);
+        intentTicketForm.putExtra("TICKET_TIPO", tipoTicket);
         startActivity(intentTicketForm);
     }
 

@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/main_nr_pokemon"
+                    android:id="@+id/ticket_form_txt_titulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Título"/>
@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/ticket_form_txt_descricao"
                     android:inputType="textMultiLine"
                     android:hint="Descrição"
                     android:gravity="top|left"

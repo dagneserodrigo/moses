@@ -54,7 +54,7 @@
             android:id="@+id/menu_item_problema"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="novoTicketReclamacao"
+            android:onClick="novoTicketProblema"
             android:src="@drawable/ic_menu_plus"
             fab:fab_colorNormal="@color/walmart_red"
             fab:fab_label="Problemas"

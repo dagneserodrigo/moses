@@ -16,6 +16,8 @@ import br.com.cwi.moses.util.Constantes;
 
 public class TicketApiService implements ChildEventListener {
 
+    private static TicketApiService ticketApiService = new TicketApiService();
+
     private FirebaseDatabase database;
     private List<Ticket> tickets;
 
@@ -26,10 +28,16 @@ public class TicketApiService implements ChildEventListener {
         dbReference.addChildEventListener(this);
     }
 
+    public static TicketApiService getInstance( ) {
+        return ticketApiService;
+    }
+
+    // TODO remover método mock
     public List<Ticket> getAllTickets() {
         return this.getFakeList();
     }
 
+    // TODO remover método mock
     private List<Ticket> getFakeList() {
         List<Ticket> list = new ArrayList<>();
 
@@ -45,6 +53,11 @@ public class TicketApiService implements ChildEventListener {
         list.add(new Ticket("Trabalhar de Bermuda", "Pode trabalhar de bermuda no verão?", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
 
         return list;
+    }
+
+    public void addTicketFromForm(String titulo, String descricao, TipoTicket tipo) {
+        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO);
+        this.add(ticket);
     }
 
     public Ticket getTicketById(String id){
