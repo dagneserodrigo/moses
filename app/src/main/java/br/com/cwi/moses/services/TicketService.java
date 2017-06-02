@@ -20,7 +20,11 @@ public class TicketService implements ChildEventListener {
 
     private static final String USER_ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-    private static TicketService ticketService = new TicketService();
+    private static TicketService ticketService;
+
+    static {
+        ticketService = new TicketService();
+    }
 
     private FirebaseDatabase database;
 

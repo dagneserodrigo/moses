@@ -11,8 +11,6 @@ public class BaseActivity extends AppCompatActivity {
     private AlertDialog.Builder alert;
     private ProgressDialog progress;
 
-    private TicketService ticketService = TicketService.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
