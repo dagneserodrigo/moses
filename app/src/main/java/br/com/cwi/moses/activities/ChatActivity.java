@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -36,10 +39,19 @@ public class ChatActivity extends AppCompatActivity implements MessageInput.Inpu
     }
 
     private void initComponents() {
-        adapter = new MessagesListAdapter<>("user", null);
+        ImageLoader imageLoader = new ImageLoader() {
+            @Override
+            public void loadImage(ImageView imageView, String url) {
+                Picasso.with(ChatActivity.this).load(url).into(imageView);
+            }
+        };
+
+        adapter = new MessagesListAdapter<>("user", imageLoader);
         messagesList.setAdapter(adapter);
         input.setInputListener(this);
         chatService = new ChatService(this, this.adapter);
+
+        chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
     }
 
     @Override
