@@ -1,20 +1,29 @@
 package br.com.cwi.moses.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+
+import com.stfalcon.chatkit.messages.MessageInput;
+import com.stfalcon.chatkit.messages.MessagesList;
+import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import br.com.cwi.moses.R;
+import br.com.cwi.moses.chat.Message;
 import br.com.cwi.moses.services.ChatService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.intentservice.chatui.ChatView;
-import co.intentservice.chatui.models.ChatMessage;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity implements MessageInput.InputListener {
 
-    @BindView(R.id.chat_view)
-    ChatView chatView;
+    @BindView(R.id.messagesList)
+    MessagesList messagesList;
 
+    @BindView(R.id.input)
+    MessageInput input;
+
+    private MessagesListAdapter<Message> adapter;
     private ChatService chatService;
 
     @Override
@@ -27,17 +36,15 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        final ChatService chatService = new ChatService(this.chatView, this);
-        this.chatService = chatService;
+        adapter = new MessagesListAdapter<>("user", null);
+        messagesList.setAdapter(adapter);
+        input.setInputListener(this);
+        chatService = new ChatService(this, this.adapter);
+    }
 
-        this.chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
-            @Override
-            public boolean sendMessage(ChatMessage chatMessage) {
-                chatService.sendMessage(chatMessage);
-                return true;
-            }
-        });
-
-        this.chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
+    @Override
+    public boolean onSubmit(CharSequence charSequence) {
+        this.chatService.sendMessage(charSequence.toString());
+        return true;
     }
 }

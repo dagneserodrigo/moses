@@ -2,6 +2,7 @@ package br.com.cwi.moses.services;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +19,7 @@ import br.com.cwi.moses.utils.Constants;
 
 public class TicketService implements ChildEventListener {
 
-    private static final String USER_ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private static final FirebaseUser USER = FirebaseAuth.getInstance().getCurrentUser();
 
     private static TicketService ticketService;
 
@@ -42,11 +43,11 @@ public class TicketService implements ChildEventListener {
     }
 
     public List<Ticket> getAllTickets() {
-        return getByUser(USER_ID);
+        return getByUser(USER.getUid());
     }
 
     public void addTicketFromForm(String titulo, String descricao, TipoTicket tipo) {
-        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO, USER_ID);
+        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO, USER.getUid());
         this.add(ticket);
     }
 
