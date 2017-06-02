@@ -32,6 +32,7 @@ public class ChatService {
 
     private ChatView chatView;
     private ChatActivity activity;
+    private String ultimaMensagemBot;
 
     public ChatService(ChatView chatView, ChatActivity activity) {
         this.chatView = chatView;
@@ -42,6 +43,7 @@ public class ChatService {
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("mensagem", chatMessage.getMessage());
+            jsonBody.put("bot", this.ultimaMensagemBot);
         } catch (JSONException e) {
             Log.e(TAG_CHAT_SERVICE, "Erro ao setar mensagem do body", e);
         }
@@ -94,6 +96,7 @@ public class ChatService {
     }
 
     public void adicionaMensagemRecebida(String mensagem) {
+        this.ultimaMensagemBot = mensagem;
         this.chatView.addMessage(new ChatMessage(mensagem, System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
     }
 
