@@ -2,4 +2,5 @@
 <resources>
     <dimen name="frmMarginDefault">30dp</dimen>
     <dimen name="frmPaddingDefault">20dp</dimen>
+    <dimen name="titleDefaultMarginTop">24dp</dimen>
 </resources>
