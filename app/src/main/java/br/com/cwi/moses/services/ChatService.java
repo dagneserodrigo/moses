@@ -32,6 +32,7 @@ public class ChatService {
     private static final String TAG_CHAT_SERVICE = "ChatService";
 
     private ChatActivity activity;
+    private String ultimaMensagemBot;
     private MessagesListAdapter<Message> adapter;
 
     private MessageBuilder messageBuilder;
@@ -48,6 +49,7 @@ public class ChatService {
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("mensagem", text);
+            jsonBody.put("bot", this.ultimaMensagemBot);
         } catch (JSONException e) {
             Log.e(TAG_CHAT_SERVICE, "Erro ao setar mensagem do body", e);
         }
@@ -99,6 +101,7 @@ public class ChatService {
     }
 
     public void adicionaMensagemRecebida(String text) {
+        this.ultimaMensagemBot = mensagem;
         Message message = this.messageBuilder.createMessageMoses(text);
         this.adapter.addToStart(message, true);
     }

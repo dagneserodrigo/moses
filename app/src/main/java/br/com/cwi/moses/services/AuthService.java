@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import br.com.cwi.moses.activities.BaseActivity;
 import br.com.cwi.moses.activities.MainActivity;
@@ -54,6 +55,12 @@ public class AuthService {
                         activity.showError(task.getException().getMessage());
                     } else {
                         Log.w(Constants.LOG_FIREBASE, "signInWithEmail:success", task.getException());
+
+                        FirebaseUser user = task.getResult().getUser();
+                        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(Constants.USER_CHILD_FRD);
+                        String userToken = FirebaseInstanceId.getInstance().getToken();
+                        dbReference.child(user.getUid()).child(Constants.TOKEN_CHILD_FRD).setValue(userToken);
+
                         Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
                     }
@@ -78,6 +85,9 @@ public class AuthService {
 
                         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(Constants.USER_CHILD_FRD);
                         dbReference.child(user.getUid()).child(Constants.USERNAME_CHILD_FRD).setValue(username);
+
+                        String userToken = FirebaseInstanceId.getInstance().getToken();
+                        dbReference.child(user.getUid()).child(Constants.TOKEN_CHILD_FRD).setValue(userToken);
 
                         Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);

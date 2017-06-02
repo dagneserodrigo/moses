@@ -23,4 +23,5 @@ public class Constants {
     public static final String USER_CHILD_FRD = "Users";
     public static final String TICKET_CHILD_FRD = "Tickets";
     public static final String USERNAME_CHILD_FRD = "Name";
+    public static final String TOKEN_CHILD_FRD = "Token";
 }
