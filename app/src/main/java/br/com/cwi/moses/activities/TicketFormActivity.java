@@ -14,8 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TicketFormActivity extends AppCompatActivity {
-
-    private FormValidator formValidatorService = new FormValidator();
+    
     private TicketService ticketService = TicketService.getInstance();
 
     private TipoTicket tipoTicket;
