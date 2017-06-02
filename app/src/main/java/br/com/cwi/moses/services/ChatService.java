@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,8 +19,8 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 
 import br.com.cwi.moses.activities.ChatActivity;
-import co.intentservice.chatui.ChatView;
-import co.intentservice.chatui.models.ChatMessage;
+import br.com.cwi.moses.chat.Message;
+import br.com.cwi.moses.chat.MessageBuilder;
 
 /**
  * Created by Murillo on 30/05/2017.
@@ -30,18 +31,23 @@ public class ChatService {
     private static final String URL_SEND_MESSAGE = "http://moses-api.herokuapp.com/bot";
     private static final String TAG_CHAT_SERVICE = "ChatService";
 
-    private ChatView chatView;
     private ChatActivity activity;
+    private MessagesListAdapter<Message> adapter;
 
-    public ChatService(ChatView chatView, ChatActivity activity) {
-        this.chatView = chatView;
+    private MessageBuilder messageBuilder;
+
+    public ChatService(ChatActivity activity,  MessagesListAdapter<Message> adapter) {
         this.activity = activity;
+        this.adapter = adapter;
+        this.messageBuilder = new MessageBuilder();
     }
 
-    public void sendMessage(ChatMessage chatMessage) {
+    public void sendMessage(String text) {
+        this.adicionaMensagemEnviada(text);
+
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("mensagem", chatMessage.getMessage());
+            jsonBody.put("mensagem", text);
         } catch (JSONException e) {
             Log.e(TAG_CHAT_SERVICE, "Erro ao setar mensagem do body", e);
         }
@@ -90,14 +96,15 @@ public class ChatService {
 
     private void onSendMessageError(VolleyError error) {
         this.adicionaMensagemRecebida("Não recebi sua mensagem. Verifique sua conexão com a internet.");
-        this.adicionaErroNaTela();
     }
 
-    public void adicionaMensagemRecebida(String mensagem) {
-        this.chatView.addMessage(new ChatMessage(mensagem, System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
+    public void adicionaMensagemRecebida(String text) {
+        Message message = this.messageBuilder.createMessageMoses(text);
+        this.adapter.addToStart(message, true);
     }
 
-    private void adicionaErroNaTela() {
-        // TODO
+    public void adicionaMensagemEnviada(String text) {
+        Message message = this.messageBuilder.createMessageUser(text);
+        this.adapter.addToStart(message, true);
     }
 }
