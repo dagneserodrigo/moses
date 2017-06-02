@@ -101,7 +101,7 @@ public class ChatService {
     }
 
     public void adicionaMensagemRecebida(String text) {
-        this.ultimaMensagemBot = mensagem;
+        this.ultimaMensagemBot = text;
         Message message = this.messageBuilder.createMessageMoses(text);
         this.adapter.addToStart(message, true);
     }
