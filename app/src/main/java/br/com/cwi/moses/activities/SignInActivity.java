@@ -6,16 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.services.AuthService;
-import br.com.cwi.moses.services.FormValidatorService;
+import br.com.cwi.moses.utils.FormValidator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignInActivity extends BaseActivity {
-
     private AuthService authService;
-    private FormValidatorService formValidatorService = new FormValidatorService();
 
     @BindView(R.id.txtEmail) EditText txtEmail;
     @BindView(R.id.txtPassword) EditText txtPassword;
@@ -28,7 +28,6 @@ public class SignInActivity extends BaseActivity {
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
         initComponents();
-
     }
 
     private void initComponents() {
@@ -37,11 +36,8 @@ public class SignInActivity extends BaseActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isEmailValid() && isPassValid()) {
-                    String email = txtEmail.getText().toString();
-                    String senha = txtPassword.getText().toString();
-
-                    signIn(email, senha);
+                if (emailIsValid() && passwordIsValid()) {
+                    signIn(txtEmail.getText().toString(), txtPassword.getText().toString());
                 }
             }
         });
@@ -54,18 +50,17 @@ public class SignInActivity extends BaseActivity {
         });
     }
 
-//    PASSAR CONTROLE PARA BASE ACTIVITY
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(currentUser != null){
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser currentUser = authService.getCurrentUser();
+
+        if(currentUser != null){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
 
     private void signIn(String email, String password){
         authService.signIn(email, password);
@@ -76,13 +71,11 @@ public class SignInActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private boolean isPassValid() {
-        formValidatorService.cleanFieldErrors(txtPassword);
-        return formValidatorService.isntFieldEmpty(txtPassword);
+    private boolean emailIsValid() {
+        return !FormValidator.isEmpty(txtPassword);
     }
 
-    private boolean isEmailValid() {
-        formValidatorService.cleanFieldErrors(txtEmail);
-        return formValidatorService.isntFieldEmpty(txtEmail) && formValidatorService.emailPatternsMatches(txtEmail);
+    private boolean passwordIsValid() {
+        return !FormValidator.isEmpty(txtEmail) && FormValidator.emailIsvalid(txtEmail);
     }
 }

@@ -33,6 +33,15 @@ public class Ticket implements Serializable {
         this.dataAberturaTicket = new Date();
     }
 
+    public Ticket(String titulo, String descricao, TipoTicket tipoTicket, SituacaoTicket situacaoTicket, String userId) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.tipoTicket = tipoTicket;
+        this.situacaoTicket = situacaoTicket;
+        this.userId = userId;
+        this.dataAberturaTicket = new Date();
+    }
+
     public Ticket(){}
 
     public String getTitulo() {

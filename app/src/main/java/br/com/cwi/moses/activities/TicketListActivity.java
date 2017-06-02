@@ -9,14 +9,15 @@ import android.view.View;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.adapters.TicketAdapter;
+import br.com.cwi.moses.models.Ticket;
 import br.com.cwi.moses.models.TipoTicket;
 import br.com.cwi.moses.services.TicketService;
 
-public class TicketListActivity extends AppCompatActivity {
+public class TicketListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView ticket_list;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
+    private TicketAdapter adapter;
 
     private TicketService ticketService;
 
@@ -50,7 +51,7 @@ public class TicketListActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        this.ticketService = new TicketService();
+        this.ticketService = TicketService.getInstance();
 
         this.ticket_list = (RecyclerView) findViewById(R.id.ticket_list);
     }
@@ -61,5 +62,14 @@ public class TicketListActivity extends AppCompatActivity {
 
         this.ticket_list.setLayoutManager(this.layoutManager);
         this.ticket_list.setAdapter(this.adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position = ticket_list.getChildLayoutPosition(v);
+        Ticket ticket = this.adapter.getTicketFromPosition(position);
+        Intent intentTicketForm = new Intent(this, TicketDetalheActivity.class);
+        intentTicketForm.putExtra("TICKET", ticket);
+        startActivity(intentTicketForm);
     }
 }

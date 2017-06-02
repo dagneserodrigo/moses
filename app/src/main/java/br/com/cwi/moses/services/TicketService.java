@@ -1,6 +1,7 @@
 package br.com.cwi.moses.services;
 
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,12 +18,15 @@ import br.com.cwi.moses.utils.Constants;
 
 public class TicketService implements ChildEventListener {
 
+    private static final String USER_ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     private static TicketService ticketService = new TicketService();
 
     private FirebaseDatabase database;
 
     private List<Ticket> tickets;
-    public TicketService(){
+
+    private TicketService(){
         tickets = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference dbReference = database.getReference(Constants.USER_CHILD_FRD);
@@ -34,28 +38,11 @@ public class TicketService implements ChildEventListener {
     }
 
     public List<Ticket> getAllTickets() {
-        return this.getFakeList();
-    }
-
-    private List<Ticket> getFakeList() {
-        List<Ticket> list = new ArrayList<>();
-
-        list.add(new Ticket("Caronas da Empresa", "Poderiamos ter um sistema de gerenciamento de caronas para otimizar as vagas no estacionamento", TipoTicket.SUGESTAO, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Conectar Notebook na Rede", "Não  Consigo conectar minha máquina na Rede. Help-me!", TipoTicket.PROBLEMA, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Senha do Wifi", "Esqueci a senha do WIFI. Help-me!", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Videogame", "Podíamos ter videogames à disposição dos funcionários para os horários de lazer. Fica a dica.", TipoTicket.SUGESTAO, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Trabalhar de Bermuda", "Pode trabalhar de bermuda no verão?", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Caronas da Empresa", "Poderiamos ter um sistema de gerenciamento de caronas para otimizar as vagas no estacionamento", TipoTicket.SUGESTAO, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Conectar Notebook na Rede", "Não  Consigo conectar minha máquina na Rede. Help-me!", TipoTicket.PROBLEMA, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Senha do Wifi", "Esqueci a senha do WIFI. Help-me!", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Videogame", "Podíamos ter videogames à disposição dos funcionários para os horários de lazer. Fica a dica.", TipoTicket.SUGESTAO, SituacaoTicket.ABERTO));
-        list.add(new Ticket("Trabalhar de Bermuda", "Pode trabalhar de bermuda no verão?", TipoTicket.DUVIDA, SituacaoTicket.ABERTO));
-
-        return list;
+        return getByUser(USER_ID);
     }
 
     public void addTicketFromForm(String titulo, String descricao, TipoTicket tipo) {
-        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO);
+        Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO, USER_ID);
         this.add(ticket);
     }
 

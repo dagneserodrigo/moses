@@ -10,6 +10,11 @@ public class Constants {
     public static final String INTERNET_ERROR = "Verifique a internet";
     public static final String AUTH_FAILED = "Não foi possível autenticar o usuário";
     public static final String SIGN_UP_FAILED = "Não foi possível cadastrar o usuário";
+    public static final String CAMPO_OBRIGATORIO = "Este campo é obrigatório.";
+    public static final String EMAIL_FORMATO_INVALIDO = "Este e-mail é inválido.";
+    public static final String SENHA_MUITO_CURTA = "Sua senha deve ter, ao menos, 6 caracteres.";
+    public static final String SENHAS_NAO_CONFEREM = "As senhas não conferem.";
+    public static final int MIN_LENGTH_SENHA = 6;
 
     //LOADERS
     public static final String WAIT_LOADER = "Aguarde...";

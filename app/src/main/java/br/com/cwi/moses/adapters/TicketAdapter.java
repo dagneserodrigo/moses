@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.com.cwi.moses.R;
+import br.com.cwi.moses.activities.TicketListActivity;
 import br.com.cwi.moses.models.Ticket;
 import br.com.cwi.moses.models.TipoTicket;
 
@@ -35,6 +36,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             this.item_list_txt_data = (TextView) itemView.findViewById(R.id.item_list_txt_data);
             this.item_list_txt_titulo = (TextView) itemView.findViewById(R.id.item_list_txt_titulo);
             this.item_list_txt_situacao = (TextView) itemView.findViewById(R.id.item_list_txt_situacao);
+
+            itemView.setOnClickListener((TicketListActivity) itemView.getContext());
         }
     }
 
@@ -42,6 +45,10 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     public TicketAdapter(List<Ticket> listTicket) {
         this.listTicket = listTicket;
+    }
+
+    public Ticket getTicketFromPosition(int position) {
+        return this.listTicket.get(position);
     }
 
     @Override
