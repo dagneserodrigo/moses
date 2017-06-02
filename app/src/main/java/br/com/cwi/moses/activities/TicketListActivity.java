@@ -51,7 +51,7 @@ public class TicketListActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initComponents() {
-        this.ticketService = new TicketService();
+        this.ticketService = TicketService.getInstance();
 
         this.ticket_list = (RecyclerView) findViewById(R.id.ticket_list);
     }
