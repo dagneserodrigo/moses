@@ -12,13 +12,17 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 import br.com.cwi.moses.utils.Constants;
 
 public class TokenService extends FirebaseInstanceIdService {
-
+    private static String TAG = "onTokenRefresh";
     @Override
     public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(Constants.USER_CHILD_FRD);
-        dbReference.child(user.getUid()).child(Constants.TOKEN_CHILD_FRD).setValue(refreshedToken);
-        Log.d("onRefreshToken", "Refreshed Token: " + refreshedToken);
+        try{
+            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(Constants.USER_CHILD_FRD);
+            dbReference.child(user.getUid()).child(Constants.TOKEN_CHILD_FRD).setValue(refreshedToken);
+            Log.d("onRefreshToken", "Refreshed Token: " + refreshedToken);
+        }catch(Exception e){
+            Log.e(TAG, e.getMessage());
+        }
     }
 }

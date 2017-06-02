@@ -12,10 +12,14 @@ public class MessageService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
-        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
-        Map<String, String> data = remoteMessage.getData();
-        double desconto = Double.valueOf(data.get("desconto"));
-        Log.d(TAG, "Desconto na locação: " + desconto);
+        try {
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+            Log.d(TAG, "Notification Message Title: " + remoteMessage.getNotification().getTitle());
+            Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+            Map<String, String> data = remoteMessage.getData();
+            String idTicket = data.get("ticketId");
+        }catch(Exception e){
+            Log.e(TAG, e.getMessage());
+        }
     }
 }
