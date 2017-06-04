@@ -19,7 +19,7 @@ import br.com.cwi.moses.utils.Constants;
 
 public class TicketService implements ChildEventListener {
 
-    private static final FirebaseUser USER = FirebaseAuth.getInstance().getCurrentUser();
+    private static FirebaseUser USER = FirebaseAuth.getInstance().getCurrentUser();
 
     private static TicketService ticketService;
 
@@ -43,12 +43,18 @@ public class TicketService implements ChildEventListener {
     }
 
     public List<Ticket> getAllTickets() {
+        this.updateCurrentUser();
         return getByUser(USER.getUid());
     }
 
     public void addTicketFromForm(String titulo, String descricao, TipoTicket tipo) {
+        this.updateCurrentUser();
         Ticket ticket = new Ticket(titulo, descricao, tipo, SituacaoTicket.ABERTO, USER.getUid());
         this.add(ticket);
+    }
+
+    private void updateCurrentUser() {
+        this.USER = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     public Ticket getTicketById(String id){

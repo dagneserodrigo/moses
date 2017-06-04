@@ -17,4 +17,8 @@ public enum TipoTicket implements Serializable {
     TipoTicket(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }
