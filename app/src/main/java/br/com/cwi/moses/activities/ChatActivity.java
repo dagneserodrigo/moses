@@ -1,5 +1,6 @@
 package br.com.cwi.moses.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,11 +15,15 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.chat.Message;
+import br.com.cwi.moses.models.TipoTicket;
 import br.com.cwi.moses.services.ChatService;
+import br.com.cwi.moses.utils.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ChatActivity extends AppCompatActivity implements MessageInput.InputListener {
+public class ChatActivity extends AppCompatActivity
+        implements MessageInput.InputListener,
+        MessagesListAdapter.OnMessageClickListener<Message> {
 
     @BindView(R.id.messagesList)
     MessagesList messagesList;
@@ -47,6 +52,7 @@ public class ChatActivity extends AppCompatActivity implements MessageInput.Inpu
         };
 
         adapter = new MessagesListAdapter<>("user", imageLoader);
+        adapter.setOnMessageClickListener(this);
         messagesList.setAdapter(adapter);
         input.setInputListener(this);
         chatService = new ChatService(this, this.adapter);
@@ -58,5 +64,18 @@ public class ChatActivity extends AppCompatActivity implements MessageInput.Inpu
     public boolean onSubmit(CharSequence charSequence) {
         this.chatService.sendMessage(charSequence.toString());
         return true;
+    }
+
+    @Override
+    public void onMessageClick(Message message) {
+        if (message.getText().equals(Constants.IR_PARA_TICKET)) {
+            this.abrirTicketProblema();
+        }
+    }
+
+    private void abrirTicketProblema() {
+        Intent intentTicketForm = new Intent(this, TicketFormActivity.class);
+        intentTicketForm.putExtra("TICKET_TIPO", TipoTicket.PROBLEMA);
+        startActivity(intentTicketForm);
     }
 }

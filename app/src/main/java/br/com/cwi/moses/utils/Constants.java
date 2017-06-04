@@ -24,4 +24,7 @@ public class Constants {
     public static final String TICKET_CHILD_FRD = "Tickets";
     public static final String USERNAME_CHILD_FRD = "Name";
     public static final String TOKEN_CHILD_FRD = "Token";
+
+    //Chat actions
+    public static final String IR_PARA_TICKET = "Infelizmente não posso ajudá-lo(a). Toque aqui para abrir um chamado para o serviço compartilhado.";
 }
