@@ -15,6 +15,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import br.com.cwi.moses.activities.BaseActivity;
 import br.com.cwi.moses.activities.MainActivity;
+import br.com.cwi.moses.activities.SignInActivity;
 import br.com.cwi.moses.utils.Constants;
 
 /**
@@ -98,6 +99,8 @@ public class AuthService {
 
     public void signOut(){
         auth.signOut();
+        Intent intent = new Intent(activity, SignInActivity.class);
+        activity.startActivity(intent);
     }
 
     public FirebaseUser getCurrentUser() {

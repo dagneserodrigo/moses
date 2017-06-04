@@ -18,7 +18,7 @@
     </style>
 
     <style name="WalmartEditText">
-        <item name="colorAccent">@color/walmartGray</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:layout_marginTop">@dimen/edit_text_margin_top</item>
     </style>
 

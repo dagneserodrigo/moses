@@ -45,15 +45,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Aberto em"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/detalhe_txt_dataAbertura"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="31/05 - 16h58"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,15 +64,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Situação"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/detalhe_txt_situacao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ABERTO"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </LinearLayout>

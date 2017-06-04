@@ -59,7 +59,6 @@
             fab:fab_colorNormal="@color/walmartPink"
             fab:fab_label="Problemas"
             fab:fab_size="mini" />
-
     </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>

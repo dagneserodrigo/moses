@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="@dimen/frm_margin_left"
         android:orientation="vertical"
         android:padding="8dp">
 
@@ -25,8 +25,7 @@
             android:id="@+id/item_list_txt_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ticket de Teste"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,15 +42,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aberto em"
-                    android:textSize="14dp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/item_list_txt_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="31/05 - 16h58"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -63,20 +60,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Situação"
-                    android:textSize="14dp" />
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/item_list_txt_situacao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ABERTO"
-                    android:textSize="20dp" />
+                    android:textSize="20sp"/>
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
-
 </android.support.v7.widget.CardView>

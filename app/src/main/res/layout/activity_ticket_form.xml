@@ -8,67 +8,54 @@
     tools:context="br.com.cwi.moses.activities.TicketFormActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"></LinearLayout>
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/frmMarginDefault"
+        android:padding="@dimen/frmPaddingDefault">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="6">
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:theme="@style/WalmartEditText">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/ticket_form_txt_titulo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Título"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/ticket_form_txt_descricao"
-                    android:inputType="textMultiLine"
-                    android:hint="Descrição"
-                    android:gravity="top|left"
-                    android:maxLines="5"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:scrollbars="vertical"
-                />
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/singUp_btn_cadastrar"
+            <EditText
+                android:id="@+id/ticket_form_txt_titulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar Ticket"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:onClick="salvarTicket" />
+                android:hint="@string/txt_ticket_title_hint"/>
+        </android.support.design.widget.TextInputLayout>
 
-        </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/ticket_form_txt_descricao"
+                android:inputType="textMultiLine"
+                android:hint="@string/txt_ticket_description_hint"
+                android:gravity="top|start"
+                android:maxLines="5"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+            />
+        </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"></LinearLayout>
-
+        <Button
+            android:id="@+id/singUp_btn_cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save_ticket"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/walmartClear"
+            android:onClick="salvarTicket" />
+    </LinearLayout>
 </LinearLayout>

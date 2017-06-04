@@ -17,7 +17,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
             <EditText
                 android:id="@+id/txtName"
@@ -28,7 +29,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
             <EditText
                 android:id="@+id/txtEmail"
@@ -53,7 +55,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
             <EditText
                 android:id="@+id/txtConfirmPassword"
@@ -65,8 +68,11 @@
 
         <Button
             android:id="@+id/btnSignUp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_sign_in_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/walmartClear"
             android:text="@string/btn_sign_up"/>
     </LinearLayout>
 </LinearLayout>

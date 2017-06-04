@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:onClick="goToChat"
             style="@style/HomeOptionCard">
 
             <TextView
@@ -27,11 +28,26 @@
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_go_to_chat"
                 android:layout_gravity="center"
-                android:textColor="@color/textColorPrimary"
-                android:onClick="goToChat"/>
+                android:textColor="@color/textColorPrimary"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="goToTicket"
+            style="@style/HomeOptionCard">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_tickets_list"
+                android:textColor="@color/textColorPrimary"
+                android:layout_gravity="center"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardLogout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -40,16 +56,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_tickets_list"
+                android:text="@string/lbl_logout"
                 android:textColor="@color/textColorPrimary"
-                android:layout_gravity="center"
-                android:onClick="goToTicket"/>
+                android:layout_gravity="center"/>
         </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/lblLogout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="@string/lbl_logout"/>
     </LinearLayout>
 </LinearLayout>

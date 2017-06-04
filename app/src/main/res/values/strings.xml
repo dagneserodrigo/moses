@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Moses</string>
 
-    <string name="ticket_type_prompt">Tipo do Ticket</string>
+    <string name="ticket_type_prompt">Tipo do ticket</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Senha</string>
     <string name="btn_sign_in">Entrar</string>
@@ -10,8 +10,11 @@
     <string name="name_hint">Nome</string>
     <string name="confirm_password_hint">Confirme sua senha</string>
     <string name="lbl_logout">Logout</string>
-    <string name="lbl_tickets_list">Lista de Tickets</string>
+    <string name="lbl_tickets_list">Lista de tickets</string>
     <string name="lbl_go_to_chat">Ir para o chat</string>
+    <string name="btn_save_ticket">Salvar Ticket</string>
+    <string name="txt_ticket_description_hint">Descrição</string>
+    <string name="txt_ticket_title_hint">Título</string>
     <string-array name="ticket_type_array">
         <item>Problema</item>
         <item>Sugestão</item>

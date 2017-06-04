@@ -2,6 +2,7 @@ package br.com.cwi.moses.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity {
     private AuthService authService;
 
-    @BindView(R.id.lblLogout) TextView lblLogout;
+    @BindView(R.id.cardLogout) CardView cardLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity extends BaseActivity {
     private void initComponents() {
         authService = new AuthService(this);
 
-        lblLogout.setOnClickListener(new View.OnClickListener() {
+        cardLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 authService.signOut();
