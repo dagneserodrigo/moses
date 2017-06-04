@@ -80,13 +80,13 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     private int getColorCard(TipoTicket tipoTicket) {
         switch (tipoTicket) {
             case DUVIDA:
-                return R.color.walmart_orange;
+                return R.color.walmartOrange;
             case SUGESTAO:
-                return R.color.walmart_green;
+                return R.color.walmartGreen;
             case PROBLEMA:
-                return R.color.walmart_red;
+                return R.color.walmartPink;
             default:
-                return R.color.walmart_orange;
+                return R.color.walmartOrange;
         }
     }
 

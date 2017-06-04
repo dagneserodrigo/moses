@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,7 +21,7 @@ public class SignInActivity extends BaseActivity {
     @BindView(R.id.txtEmail) EditText txtEmail;
     @BindView(R.id.txtPassword) EditText txtPassword;
     @BindView(R.id.btnSignIn) Button btnSignIn;
-    @BindView(R.id.btnSignUp) Button btnSignUp;
+    @BindView(R.id.lblSignUp) TextView lblSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class SignInActivity extends BaseActivity {
             }
         });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        lblSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signUp();

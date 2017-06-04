@@ -9,14 +9,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_weight="1"
         android:layout_margin="@dimen/frmMarginDefault"
         android:padding="@dimen/frmPaddingDefault">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
             <EditText
                 android:id="@+id/txtEmail"
@@ -28,7 +30,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/WalmartEditText">
 
             <EditText
                 android:id="@+id/txtPassword"
@@ -42,12 +45,19 @@
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_sign_in"/>
-
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_sign_up"/>
+            android:layout_marginTop="@dimen/btn_sign_in_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/walmartClear"
+            android:text="@string/btn_sign_in" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/lblSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/lbl_sign_up_border"
+        android:minHeight="@dimen/lbl_sign_up_min_height"
+        android:text="@string/lbl_sign_up"/>
 </LinearLayout>

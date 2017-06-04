@@ -6,6 +6,7 @@
     <string name="password_hint">Senha</string>
     <string name="btn_sign_in">Entrar</string>
     <string name="btn_sign_up">Cadastrar</string>
+    <string name="lbl_sign_up">Você é novo aqui? Cadastre-se</string>
     <string name="name_hint">Nome</string>
     <string name="confirm_password_hint">Confirme sua senha</string>
     <string name="lbl_logout">Logout</string>

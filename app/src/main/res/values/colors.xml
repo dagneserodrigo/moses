@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lightBlue">#78b9e7</color>
-    <color name="colorPrimary">#007dc6</color>
-    <color name="colorPrimaryDark">#004c91</color>
-    <color name="colorAccent">#ffc220</color>
+    <color name="colorPrimary">#1A75CE</color>
+    <color name="colorPrimaryDark">#195D9E</color>
+    <color name="colorAccent">#FFC220</color>
+    <color name="textColorPrimary">#2196f3</color>
 
-    <color name="walmart_orange">#f47321</color>
-    <color name="walmart_green">#76c043</color>
-    <color name="walmart_yellow">#ffc220</color>
-    <color name="walmart_darkGreen">#367c2b</color>
-    <color name="walmart_red">#d32f2f</color>
-
-    <color name="default_bubble_color_rcv">#007dc6</color>
-    <color name="default_bubble_color_send">#d5d5d5</color>
-
-    <color name="colorRed">#FF0000</color>
+    <color name="walmartClear">#FFFFFF</color>
+    <color name="walmartCloud">#ECF0F1</color>
+    <color name="walmartOrange">#FE9003</color>
+    <color name="walmartGreen">#31AA39</color>
+    <color name="walmartGreenDark">#67A890</color>
+    <color name="walmartPink">#DF0245</color>
+    <color name="walmartGray">#CCCCCC</color>
+    <color name="walmartGrayDark">#666666</color>
 </resources>

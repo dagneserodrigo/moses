@@ -18,8 +18,8 @@
         fab:menu_backgroundColor="@android:color/transparent"
         fab:menu_buttonSpacing="0dp"
         fab:menu_colorNormal="@color/colorAccent"
-        fab:menu_colorPressed="@color/walmart_orange"
-        fab:menu_colorRipple="@color/walmart_orange"
+        fab:menu_colorPressed="@color/walmartOrange"
+        fab:menu_colorRipple="@color/walmartOrange"
         fab:menu_fab_label="Novo Ticket"
         fab:menu_fab_size="normal"
         fab:menu_icon="@drawable/ic_menu_plus"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:onClick="novoTicketSugestao"
             android:src="@drawable/ic_menu_plus"
-            fab:fab_colorNormal="@color/walmart_green"
+            fab:fab_colorNormal="@color/walmartGreen"
             fab:fab_label="Sugestões"
             fab:fab_size="mini" />
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:onClick="novoTicketDuvida"
             android:src="@drawable/ic_menu_plus"
-            fab:fab_colorNormal="@color/walmart_orange"
+            fab:fab_colorNormal="@color/walmartOrange"
             fab:fab_label="Dúvidas"
             fab:fab_size="mini" />
 
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:onClick="novoTicketProblema"
             android:src="@drawable/ic_menu_plus"
-            fab:fab_colorNormal="@color/walmart_red"
+            fab:fab_colorNormal="@color/walmartPink"
             fab:fab_label="Problemas"
             fab:fab_size="mini" />
 
