@@ -7,6 +7,7 @@ package br.com.cwi.moses.models;
 public enum SituacaoTicket {
 
     ABERTO("Aberto"),
+    FECHADO("Fechado"),
     RESPONDIDO("Respondido");
 
     private String name;

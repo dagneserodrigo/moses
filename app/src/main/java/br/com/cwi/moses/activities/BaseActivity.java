@@ -5,6 +5,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import br.com.cwi.moses.services.TicketService;
+
 public class BaseActivity extends AppCompatActivity {
     private AlertDialog.Builder alert;
     private ProgressDialog progress;

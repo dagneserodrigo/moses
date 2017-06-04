@@ -1,20 +1,32 @@
 package br.com.cwi.moses.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+import com.stfalcon.chatkit.commons.ImageLoader;
+import com.stfalcon.chatkit.messages.MessageInput;
+import com.stfalcon.chatkit.messages.MessagesList;
+import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import br.com.cwi.moses.R;
+import br.com.cwi.moses.chat.Message;
 import br.com.cwi.moses.services.ChatService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.intentservice.chatui.ChatView;
-import co.intentservice.chatui.models.ChatMessage;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity implements MessageInput.InputListener {
 
-    @BindView(R.id.chat_view)
-    ChatView chatView;
+    @BindView(R.id.messagesList)
+    MessagesList messagesList;
 
+    @BindView(R.id.input)
+    MessageInput input;
+
+    private MessagesListAdapter<Message> adapter;
     private ChatService chatService;
 
     @Override
@@ -27,17 +39,24 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        final ChatService chatService = new ChatService(this.chatView, this);
-        this.chatService = chatService;
-
-        this.chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
+        ImageLoader imageLoader = new ImageLoader() {
             @Override
-            public boolean sendMessage(ChatMessage chatMessage) {
-                chatService.sendMessage(chatMessage);
-                return true;
+            public void loadImage(ImageView imageView, String url) {
+                Picasso.with(ChatActivity.this).load(url).into(imageView);
             }
-        });
+        };
 
-        this.chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
+        adapter = new MessagesListAdapter<>("user", imageLoader);
+        messagesList.setAdapter(adapter);
+        input.setInputListener(this);
+        chatService = new ChatService(this, this.adapter);
+
+        chatService.adicionaMensagemRecebida("Olá, em que posso ajudar?");
+    }
+
+    @Override
+    public boolean onSubmit(CharSequence charSequence) {
+        this.chatService.sendMessage(charSequence.toString());
+        return true;
     }
 }
