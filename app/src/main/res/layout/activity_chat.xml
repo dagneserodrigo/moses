@@ -10,12 +10,25 @@
         android:id="@+id/messagesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:incomingTextLinkColor="@color/colorAccent"
+        app:outcomingTextLinkColor="@color/colorAccent"
+        app:outcomingDefaultBubbleColor="@color/colorPrimary"
+        app:outcomingDefaultBubblePressedColor="@color/colorPrimary"
+        app:outcomingDefaultBubbleSelectedColor="@color/colorPrimary"
+        app:incomingDefaultBubbleColor="@color/walmartLigthGray"
+        app:incomingDefaultBubblePressedColor="@color/walmartLigthGray"
+        app:incomingDefaultBubbleSelectedColor="@color/walmartLigthGray"
         android:layout_above="@+id/input"/>
 
     <com.stfalcon.chatkit.messages.MessageInput
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:inputButtonDefaultIconColor="@color/walmartCloud"
+        app:inputButtonDefaultBgColor="@color/colorAccent"
+        app:inputButtonDefaultIconDisabledColor="@color/walmartCloud"
+        app:inputButtonDefaultIconPressedColor="@color/walmartCloud"
+        app:inputButtonDefaultBgPressedColor="@color/colorAccent"
         android:layout_alignParentBottom="true"
         app:inputHint="Digite sua mensagem"/>
 

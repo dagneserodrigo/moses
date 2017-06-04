@@ -11,6 +11,7 @@
     <color name="walmartGreen">#31AA39</color>
     <color name="walmartGreenDark">#67A890</color>
     <color name="walmartPink">#DF0245</color>
+    <color name="walmartLigthGray">#e2e2e2</color>
     <color name="walmartGray">#CCCCCC</color>
     <color name="walmartGrayDark">#666666</color>
 </resources>

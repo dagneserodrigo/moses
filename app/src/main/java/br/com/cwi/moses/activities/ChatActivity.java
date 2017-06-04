@@ -21,6 +21,8 @@ import br.com.cwi.moses.utils.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static br.com.cwi.moses.R.color.colorAccent;
+
 public class ChatActivity extends AppCompatActivity
         implements MessageInput.InputListener,
         MessagesListAdapter.OnMessageClickListener<Message> {
