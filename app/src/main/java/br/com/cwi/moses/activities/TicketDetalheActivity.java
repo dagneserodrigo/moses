@@ -14,7 +14,7 @@ import br.com.cwi.moses.models.Ticket;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TicketDetalheActivity extends AppCompatActivity {
+public class TicketDetalheActivity extends BaseActivity {
 
     @BindView(R.id.detalhe_txt_titulo)
     TextView detalhe_txt_titulo;

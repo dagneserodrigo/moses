@@ -13,7 +13,7 @@ import br.com.cwi.moses.services.TicketService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TicketFormActivity extends AppCompatActivity {
+public class TicketFormActivity extends BaseActivity {
     
     private TicketService ticketService = TicketService.getInstance();
 

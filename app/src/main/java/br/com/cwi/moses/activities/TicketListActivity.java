@@ -13,7 +13,7 @@ import br.com.cwi.moses.models.Ticket;
 import br.com.cwi.moses.models.TipoTicket;
 import br.com.cwi.moses.services.TicketService;
 
-public class TicketListActivity extends AppCompatActivity implements View.OnClickListener {
+public class TicketListActivity extends BaseActivity implements View.OnClickListener {
 
     private RecyclerView ticket_list;
     private RecyclerView.LayoutManager layoutManager;

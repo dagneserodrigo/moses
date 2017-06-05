@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 
 import static br.com.cwi.moses.R.color.colorAccent;
 
-public class ChatActivity extends AppCompatActivity
+public class ChatActivity extends BaseActivity
         implements MessageInput.InputListener,
         MessagesListAdapter.OnMessageClickListener<Message> {
 
