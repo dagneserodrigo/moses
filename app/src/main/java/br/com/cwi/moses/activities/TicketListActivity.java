@@ -32,6 +32,12 @@ public class TicketListActivity extends BaseActivity implements View.OnClickList
         this.initList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.initList();
+    }
+
     public void novoTicketSugestao(View view) {
         this.goToNewTicket(TipoTicket.SUGESTAO);
     }
