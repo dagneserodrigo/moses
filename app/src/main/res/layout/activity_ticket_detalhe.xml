@@ -18,21 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/detalhe_txt_titulo"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/titleDefaultMarginTop"
-                android:textSize="24sp"
                 android:layout_height="wrap_content"
-                android:text="Titulo" />
+                android:layout_marginTop="@dimen/titleDefaultMarginTop"
+                android:text="Titulo"
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -45,6 +45,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Aberto em"
                         android:textSize="14sp" />
 
                     <TextView
@@ -64,6 +65,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Situação"
                         android:textSize="14sp" />
 
                     <TextView
@@ -74,6 +76,52 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        style="@style/TicketCardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detalhe_txt_pergunta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/detalhe_txt_resposta_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Resposta"
+                android:visibility="invisible"
+                android:textSize="1sp" />
+
+            <TextView
+                android:id="@+id/detalhe_txt_resposta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:textSize="1sp" />
+
 
         </LinearLayout>
 
