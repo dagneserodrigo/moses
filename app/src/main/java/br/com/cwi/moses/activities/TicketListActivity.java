@@ -59,6 +59,7 @@ public class TicketListActivity extends AppCompatActivity implements View.OnClic
     private void initList() {
         this.layoutManager = new LinearLayoutManager(this);
         this.adapter = new TicketAdapter(this.ticketService.getAllTickets());
+        this.ticketService.setListener(this.adapter);
 
         this.ticket_list.setLayoutManager(this.layoutManager);
         this.ticket_list.setAdapter(this.adapter);

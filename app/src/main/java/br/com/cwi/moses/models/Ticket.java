@@ -25,6 +25,8 @@ public class Ticket implements Serializable {
 
     public String userId;
 
+    public boolean updated;
+
     public Ticket(String titulo, String descricao, TipoTicket tipoTicket, SituacaoTicket situacaoTicket) {
         this.titulo = titulo;
         this.descricao = descricao;

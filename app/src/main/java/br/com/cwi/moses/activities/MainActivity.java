@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import br.com.cwi.moses.R;
 import br.com.cwi.moses.services.AuthService;
+import br.com.cwi.moses.services.TicketService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,7 +28,7 @@ public class MainActivity extends BaseActivity {
 
     private void initComponents() {
         authService = new AuthService(this);
-
+        TicketService.getInstance();
         cardLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

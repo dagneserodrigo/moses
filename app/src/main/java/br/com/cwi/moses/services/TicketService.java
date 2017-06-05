@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cwi.moses.adapters.TicketAdapter;
 import br.com.cwi.moses.models.SituacaoTicket;
 import br.com.cwi.moses.models.Ticket;
 import br.com.cwi.moses.models.TipoTicket;
@@ -19,17 +20,15 @@ import br.com.cwi.moses.utils.Constants;
 
 public class TicketService implements ChildEventListener {
 
-    private static FirebaseUser USER = FirebaseAuth.getInstance().getCurrentUser();
+    private static FirebaseUser USER;
 
     private static TicketService ticketService;
-
-    static {
-        ticketService = new TicketService();
-    }
 
     private FirebaseDatabase database;
 
     private List<Ticket> tickets;
+
+    private TicketAdapter adapter;
 
     private TicketService(){
         tickets = new ArrayList<>();
@@ -39,6 +38,8 @@ public class TicketService implements ChildEventListener {
     }
 
     public static TicketService getInstance( ) {
+        if(ticketService == null)
+            ticketService = new TicketService();
         return ticketService;
     }
 
@@ -97,6 +98,7 @@ public class TicketService implements ChildEventListener {
             tickets.remove(getTicketById(ticket.id));
             tickets.add(ticket);
         }
+        notifyChanges();
     }
 
     @Override
@@ -113,4 +115,15 @@ public class TicketService implements ChildEventListener {
 
     @Override
     public void onCancelled(DatabaseError databaseError) { }
+
+    public void notifyChanges(){
+        if(adapter != null) {
+            adapter.setSource(getAllTickets());
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    public void setListener(TicketAdapter adapter){
+        this.adapter = adapter;
+    }
 }

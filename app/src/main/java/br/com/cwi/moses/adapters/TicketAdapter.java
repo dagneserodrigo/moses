@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         private TextView item_list_txt_data;
         private TextView item_list_txt_titulo;
         private TextView item_list_txt_situacao;
+        private ImageView item_list_ic_updated;
 
         private LinearLayout item_list_border;
 
@@ -36,6 +38,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             this.item_list_txt_data = (TextView) itemView.findViewById(R.id.item_list_txt_data);
             this.item_list_txt_titulo = (TextView) itemView.findViewById(R.id.item_list_txt_titulo);
             this.item_list_txt_situacao = (TextView) itemView.findViewById(R.id.item_list_txt_situacao);
+            this.item_list_ic_updated = (ImageView) itemView.findViewById(R.id.item_list_ic_updated);
 
             itemView.setOnClickListener((TicketListActivity) itemView.getContext());
         }
@@ -73,6 +76,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         holder.item_list_txt_data.setText(data);
         holder.item_list_txt_titulo.setText(titulo);
         holder.item_list_txt_situacao.setText(situacao);
+        holder.item_list_ic_updated.setVisibility(ticket.updated ? View.VISIBLE : View.INVISIBLE);
 
         holder.item_list_border.setBackgroundResource(this.getColorCard(ticket.getTipoTicket()));
     }
@@ -93,5 +97,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return this.listTicket.size();
+    }
+
+    public void setSource(List<Ticket> tickets){
+        this.listTicket = tickets;
     }
 }
